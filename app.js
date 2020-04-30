@@ -1,10 +1,11 @@
-let express = require("express");
-let morgan = require("morgan");
+const express = require("express");
+const morgan = require("morgan");
 const models = require("./models");
 const wikiRouter = require("./routes/wiki");
 const userRouter = require("./routes/user");
 
-let app = express();
+const app = express();
+
 app.use("/wiki", wikiRouter);
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/stylesheets"));
@@ -19,7 +20,7 @@ app.get("/", function (req, res) {
 //   console.log("connected to the database");
 // });
 
-let PORT = 3000;
+const PORT = 3000;
 
 const init = async () => {
   await models.db.sync({ force: true });

@@ -1,7 +1,8 @@
 // import { Router } from "express";
-let express = require("express");
-let Router = express.Router();
+const express = require("express");
+const Router = express.Router();
 const { addPage } = require("../views");
+
 Router.get("/", (req, res, next) => {
   res.send("got to GET /wiki/");
 });
