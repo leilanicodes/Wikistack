@@ -8,7 +8,7 @@ const app = express();
 
 app.use("/wiki", wikiRouter);
 app.use(morgan("dev"));
-app.use(express.static(__dirname + "/stylesheets"));
+app.use(express.static(__dirname + "./public"));
 // parses url-encoded bodies
 app.use(express.urlencoded({ extended: false }));
 

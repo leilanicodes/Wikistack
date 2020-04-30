@@ -10,7 +10,7 @@ const Page = db.define("page", {
   },
   slug: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   content: {
     type: Sequelize.TEXT,
@@ -19,6 +19,21 @@ const Page = db.define("page", {
   status: {
     type: Sequelize.ENUM("open", "closed"),
   },
+  //   {
+  //     hooks: {
+  //     beforeValidate: function generateSlug(title) {
+  //     return title.replace(/\s+/g, "_").replace(/\W/g, "");
+  //   }
+  // }
+  //   }
+});
+
+function generateSlug(title) {
+  return title.replace(/\s+/g, "_").replace(/\W/g, "");
+}
+
+Page.beforeValidate((instance) => {
+  instance.slug = generateSlug(instance.title);
 });
 
 const User = db.define("user", {
